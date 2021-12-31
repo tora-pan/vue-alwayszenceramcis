@@ -26,6 +26,11 @@ const routes = [
     name: "Contact",
     component: () => import("../views/Contact.vue"),
   },
+  {
+    path: "/login",
+    name: "LoginSignup",
+    component: () => import("../views/LoginSignup.vue"),
+  },
 ];
 
 const router = createRouter({

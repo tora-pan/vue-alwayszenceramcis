@@ -16,6 +16,9 @@
       <li class="link-item">
         <router-link to="/contact">Contact</router-link>
       </li>
+      <li class="link-item">
+        <router-link to="/login">Login</router-link>
+      </li>
     </ul>
   </nav>
 </template>
