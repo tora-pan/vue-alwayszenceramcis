@@ -19,6 +19,7 @@
       >Login</router-link
     >
     <div class="username-text" v-else>
+      <img :src="photoUrl" class="profile-pic" alt="profile picture" />
       <p>{{ username }}</p>
       <button class="login-link" @click="logoutUser">Logout</button>
     </div>
@@ -39,17 +40,31 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ isLoggedIn: "getSessionStatus", username: "getUsername" }),
+    ...mapGetters({
+      isLoggedIn: "getSessionStatus",
+      username: "getUsername",
+      photoUrl: "getPhotoUrl",
+    }),
   },
 };
 </script>
 
-<style>
+<style scoped>
 .username-text {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 100px;
+  width: 200px;
+}
+.username-text p {
+  font-size: 0.8rem;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 .header {

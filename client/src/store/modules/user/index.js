@@ -9,6 +9,7 @@ const state = {
   username: null,
   userEmail: null,
   isLoggedIn: null,
+  photoURL: null,
 };
 
 // MUTATIONS
@@ -16,11 +17,13 @@ const mutations = {
   UPDATE_USER_STATUS(state, payload) {
     state.isLoggedIn = payload;
     state.username = payload.displayName;
+    state.photoUrl = payload.photoURL;
   },
   LOGOUT_USER(state) {
     state.username = null;
     state.userEmail = null;
     state.isLoggedIn = null;
+    state.photoUrl = null;
   },
 };
 // ACTIONS (asynchronous) ({commit})
@@ -43,6 +46,7 @@ const actions = {
 const getters = {
   getSessionStatus: (state) => state.isLoggedIn,
   getUsername: (state) => state.username,
+  getPhotoUrl: (state) => state.photoUrl,
 };
 const userModule = {
   state,
