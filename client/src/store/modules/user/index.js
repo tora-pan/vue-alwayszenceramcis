@@ -1,8 +1,13 @@
+import {
+  auth,
+  signInWithGoogle,
+  signOutUser,
+} from "../../../firebase/firebaseUtils";
+
 // STATE
 const state = {
-  username: "tora-pan",
-  userEmail: "travis.pandos@gmailcom",
-  userAge: 32,
+  username: null,
+  userEmail: null,
   isLoggedIn: null,
 };
 
@@ -10,17 +15,28 @@ const state = {
 const mutations = {
   UPDATE_USER_STATUS(state, payload) {
     state.isLoggedIn = payload;
+    state.username = payload.displayName;
+  },
+  LOGOUT_USER(state) {
+    state.username = null;
+    state.userEmail = null;
+    state.isLoggedIn = null;
   },
 };
 // ACTIONS (asynchronous) ({commit})
 const actions = {
   //login user
   //ping firebase, then commit("UPDATE_USER_DATA", response.data)
-  simulateLogin({ commit }) {
-    commit("UPDATE_USER_STATUS", true);
+  loginWithGoogle({ commit }) {
+    signInWithGoogle().then((response) => {
+      console.log(response.user.displayName);
+      commit("UPDATE_USER_STATUS", response.user);
+    });
   },
-  simulateLogout({ commit }) {
-    commit("UPDATE_USER_STATUS", false);
+  logoutUser({ commit }) {
+    console.log("logging out user");
+    signOutUser(auth);
+    commit("LOGOUT_USER");
   },
 };
 // GETTERS

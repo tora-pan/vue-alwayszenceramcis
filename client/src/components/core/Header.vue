@@ -1,8 +1,6 @@
 <template>
   <nav class="header">
-    <h1 class="brand">LOGO</h1>
-    <h3 v-if="getSessionStatus">Welcome {{ getUsername }} !</h3>
-    <h3 v-else>Please Login.</h3>
+    <h1 class="brand">Always Zen Ceramics</h1>
     <ul class="link-list">
       <li class="link-item">
         <router-link to="/">Home</router-link>
@@ -16,10 +14,15 @@
       <li class="link-item">
         <router-link to="/contact">Contact</router-link>
       </li>
-      <li class="link-item">
-        <router-link to="/login">Login</router-link>
-      </li>
     </ul>
+    <router-link v-if="username === null" class="login-link" to="/login"
+      >Login</router-link
+    >
+    <div class="username-text" v-else>
+      <p>{{ username }}</p>
+      <button class="login-link" @click="logoutUser">Logout</button>
+    </div>
+    <button v-if="!isLoggedIn" class="button-24">Signup</button>
   </nav>
 </template>
 
@@ -27,31 +30,51 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Header",
+  data() {
+    return {};
+  },
+  methods: {
+    logoutUser() {
+      this.$store.dispatch("logoutUser");
+    },
+  },
   computed: {
-    ...mapGetters(["getSessionStatus", "getUsername"]),
+    ...mapGetters({ isLoggedIn: "getSessionStatus", username: "getUsername" }),
   },
 };
 </script>
 
 <style>
+.username-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
 .header {
   height: 50px;
-  background: red;
+  background: white;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(98, 85, 85, 10%) 0px 2px;
 }
 
 .brand {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 50px;
+  padding-left: 100px;
   width: 70%;
 }
 
 .link-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 50px;
+  padding: 0 50px;
   margin: auto 0;
   width: 100%;
   list-style: none;
@@ -62,5 +85,63 @@ export default {
 }
 .link-item a:hover {
   color: white;
+}
+.signup-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 50px;
+  height: 20px;
+}
+.login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-left: 50px;
+  text-decoration: none;
+  color: rgb(204, 134, 146);
+  font-weight: bold;
+}
+.login-link:hover {
+  color: black;
+}
+
+/* CSS */
+.button-24 {
+  background: #ff4742;
+  border: 1px solid #ff4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff4742;
+}
+
+.button-24:active {
+  opacity: 0.5;
 }
 </style>
