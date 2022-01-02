@@ -7,14 +7,30 @@
 
 <script>
 import Header from "./components/core/Header.vue";
-
+import { auth, createUserProfileDocument } from "./firebase/firebaseUtils";
 export default {
-  
   components: {
     Header,
   },
-  
-  
+  data() {
+    return {
+      unsubscribeFromAuth: null,
+    };
+  },
+  created() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = createUserProfileDocument(userAuth);
+
+        (await userRef).onSnapshot((snapshot) => {
+          this.$store.dispatch("setUserData", {
+            id: snapshot.id,
+            ...snapshot.data(),
+          });
+        });
+      }
+    });
+  },
 };
 </script>
 

@@ -99,7 +99,7 @@ export default {
   color: black;
 }
 .link-item a:hover {
-  color: white;
+  color: rgb(158, 137, 137);
 }
 .signup-button {
   display: flex;

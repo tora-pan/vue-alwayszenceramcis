@@ -32,14 +32,15 @@ const actions = {
   //ping firebase, then commit("UPDATE_USER_DATA", response.data)
   loginWithGoogle({ commit }) {
     signInWithGoogle().then((response) => {
-      console.log(response.user.displayName);
       commit("UPDATE_USER_STATUS", response.user);
     });
   },
   logoutUser({ commit }) {
-    console.log("logging out user");
     signOutUser(auth);
     commit("LOGOUT_USER");
+  },
+  setUserData({ commit }, data) {
+    commit("UPDATE_USER_STATUS", data);
   },
 };
 // GETTERS

@@ -23,6 +23,31 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export const signOutUser = () => firebase.auth().signOut(auth);
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  if (!snapShot.exists) {
+    const { displayName, email, photoURL } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        photoURL,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (err) {
+      console.log("error creating user", err.message);
+    }
+  }
+  return userRef;
+};
+
 const db = firebaseApp.firestore();
 const usersCollection = db.collection("users");
 
@@ -31,15 +56,18 @@ export const createUser = (user) => {
   return usersCollection.add(user);
 };
 
+// get user
 export const getUser = async (id) => {
   const user = await usersCollection.doc(id).get();
   return user.exists ? user.data() : null;
 };
 
+// update user
 export const updateUser = (id, user) => {
   return usersCollection.doc(id).update(user);
 };
 
+// delete user
 export const deleteUser = (id) => {
   return usersCollection.doc(id).delete();
 };
