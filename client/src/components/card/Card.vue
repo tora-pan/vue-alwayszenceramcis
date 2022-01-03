@@ -12,12 +12,16 @@
       <div class="four"></div>
     </div>
     <p class="pick">choose color</p>
-    <div class="sizes" >
-      <div v-for="color in availableColors" :key="color"
+    <div class="sizes">
+      <div
+        v-for="color in availableColors"
+        :key="color"
         class="size"
         :class="activeColor === color ? 'focus' : ''"
         @click="toggle(color)"
-      >{{color}}</div>
+      >
+        {{ color }}
+      </div>
     </div>
 
     <div class="product">
@@ -28,7 +32,7 @@
         {{ description }}
       </p>
       <div class="buttons">
-        <button class="add">Add to Cart</button>
+        <button class="add" @click="addItemToCart">Add to Cart</button>
         <button
           class="like"
           :class="isToggled ? 'focus' : ''"
@@ -57,9 +61,20 @@ export default {
     toggleFocus() {
       this.isToggled = !this.isToggled;
     },
+    addItemToCart() {
+      console.log("addItemToCart");
+      this.$store.dispatch("addItem", {
+        productId: this.id,
+        productName: this.title,
+        productDescription: this.description,
+        productPrice: this.price,
+        productQuantity: 1,
+      });
+    },
   },
 
   props: {
+    id: Number,
     category: String,
     title: String,
     price: Number,

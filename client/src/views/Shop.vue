@@ -4,6 +4,7 @@
     <!-- List of items -->
     <div class="cards">
       <Card
+        :id="0"
         category="Bowls"
         title="Hand-made Bowl #1"
         description="ThisIsATest"
@@ -11,6 +12,7 @@
         :price="250"
       />
       <Card
+        :id="1"
         category="Plates"
         title="Amazing Plate"
         description="ThisIsATest4432"
@@ -18,6 +20,7 @@
         :price="25"
       />
       <Card
+        :id="2"
         category="Utensils"
         title="Coolest Chopsticks"
         description="ThisIsATest"
@@ -25,6 +28,7 @@
         :price="115"
       />
       <Card
+        :id="3"
         category="Bowls"
         title="Our New Zen Bowl!"
         description="ThisIsATest"

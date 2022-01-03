@@ -14,6 +14,14 @@
       <li class="link-item">
         <router-link to="/contact">Contact</router-link>
       </li>
+      <li class="link-item">
+        <router-link to="/cart">
+          <div class="shopping-cart">
+            <fa icon="shopping-cart"></fa>
+            <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
+          </div>
+        </router-link>
+      </li>
     </ul>
     <router-link v-if="username === null" class="login-link" to="/login"
       >Login</router-link
@@ -24,6 +32,7 @@
       <button class="login-link" @click="logoutUser">Logout</button>
     </div>
     <button v-if="!isLoggedIn" class="button-24">Signup</button>
+    <button @click="getTotals">TEST</button>
   </nav>
 </template>
 
@@ -32,11 +41,16 @@ import { mapGetters } from "vuex";
 export default {
   name: "Header",
   data() {
-    return {};
+    return {
+      cartQuantity: null,
+    };
   },
   methods: {
     logoutUser() {
       this.$store.dispatch("logoutUser");
+    },
+    getTotals() {
+      console.log(this.allCartItems);
     },
   },
   computed: {
@@ -44,6 +58,8 @@ export default {
       isLoggedIn: "getSessionStatus",
       username: "getUsername",
       photoUrl: "getPhotoUrl",
+      cartTotal: "getAllItems",
+      allCartItems: "getCartItems",
     }),
   },
 };
@@ -69,11 +85,11 @@ export default {
 
 .header {
   height: 50px;
-  background: white;
+  margin: 10px;
+  background: rgb(246, 243, 243);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(98, 85, 85, 10%) 0px 2px;
 }
 
 .brand {
@@ -88,6 +104,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   gap: 50px;
   padding: 0 50px;
   margin: auto 0;
@@ -101,6 +118,36 @@ export default {
 .link-item a:hover {
   color: rgb(158, 137, 137);
 }
+
+.shopping-cart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  color: rgb(175, 175, 175);
+  background: rgb(255, 255, 255);
+}
+.shopping-cart span {
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -10px;
+  right: -10px;
+  background-color: #ff4742;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .signup-button {
   display: flex;
   align-items: center;
