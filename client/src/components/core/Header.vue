@@ -17,6 +17,7 @@
       <li class="link-item">
         <router-link to="/cart">
           <div class="shopping-cart">
+            <CartDropdown />
             <fa icon="shopping-cart"></fa>
             <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
           </div>
@@ -38,6 +39,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import CartDropdown from "../cart-dropdown/CartDropdown.vue";
 export default {
   name: "Header",
   data() {
@@ -45,12 +47,15 @@ export default {
       cartQuantity: null,
     };
   },
+  components: {
+    CartDropdown,
+  },
   methods: {
     logoutUser() {
       this.$store.dispatch("logoutUser");
     },
     getTotals() {
-      console.log(this.allCartItems);
+      this.$store.dispatch("toggleDropdownVisible");
     },
   },
   computed: {

@@ -5,6 +5,7 @@
     <div class="cards">
       <Card
         :id="0"
+        imageURL="https://picsum.photos/49/49"
         category="Bowls"
         title="Hand-made Bowl #1"
         description="ThisIsATest"
@@ -13,6 +14,7 @@
       />
       <Card
         :id="1"
+        imageURL="https://picsum.photos/50/50"
         category="Plates"
         title="Amazing Plate"
         description="ThisIsATest4432"
@@ -21,6 +23,7 @@
       />
       <Card
         :id="2"
+        imageURL="https://picsum.photos/51/51"
         category="Utensils"
         title="Coolest Chopsticks"
         description="ThisIsATest"
@@ -29,6 +32,7 @@
       />
       <Card
         :id="3"
+        imageURL="https://picsum.photos/52/52"
         category="Bowls"
         title="Our New Zen Bowl!"
         description="ThisIsATest"

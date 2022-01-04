@@ -1,6 +1,7 @@
 // STATE
 const state = {
   cartItems: [],
+  isDropdownVisible: false,
 };
 
 // MUTATIONS
@@ -26,12 +27,19 @@ const mutations = {
       state.cartItems.splice(index, 1);
     }
   },
+  TOGGLE_DROPDOWN_VISIBLE() {
+    this.state.isDropdownVisible = !this.state.isDropdownVisible;
+  },
 };
 // ACTIONS (asynchronous) ({commit})
 const actions = {
   addItem({ commit }, item) {
     console.log(item);
     commit("ADD_TO_CART", item);
+  },
+  toggleDropdownVisible({ commit }) {
+    console.log("toggle called");
+    commit("TOGGLE_DROPDOWN_VISIBLE");
   },
 };
 // GETTERS
@@ -43,6 +51,14 @@ const getters = {
       total += item.productQuantity;
     });
     return total;
+  },
+  getDropdownVisible: (state) => state.isDropdownVisible,
+  getCartTotalPrice: (state) => {
+    let totalPrice = 0;
+    state.cartItems.map((item) => {
+      totalPrice += (item.productQuantity * item.productPrice);
+    });
+    return totalPrice;
   },
 };
 const cartModule = {

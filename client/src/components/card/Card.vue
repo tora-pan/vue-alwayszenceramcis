@@ -65,6 +65,7 @@ export default {
       console.log("addItemToCart");
       this.$store.dispatch("addItem", {
         productId: this.id,
+        productURL: this.imageURL,
         productName: this.title,
         productDescription: this.description,
         productPrice: this.price,
@@ -75,6 +76,7 @@ export default {
 
   props: {
     id: Number,
+    imageURL: String,
     category: String,
     title: String,
     price: Number,
