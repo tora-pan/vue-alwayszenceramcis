@@ -10,4 +10,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.about-page {
+  /* height: 100vh; */
+}
+</style>

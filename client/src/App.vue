@@ -42,12 +42,28 @@ export default {
   padding: 0;
   margin: 0;
 }
+
+html,
+body {
+  width: 100%;
+  /* height: 100%; */
+  max-width: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
   /* text-align: center; */
   color: #2c3e50;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(255, 234, 207, 1) 0%,
+    rgba(218, 190, 142, 1) 100%
+  );
 }
 
 #nav a.router-link-exact-active {
@@ -59,6 +75,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 </style>

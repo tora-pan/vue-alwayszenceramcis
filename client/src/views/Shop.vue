@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 h1 {
-  margin-bottom: 50px;
+  /* padding-top: 20px;  */
 }
 
 .shop-page {
@@ -65,8 +65,9 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* height: 100%; */
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
 }
 
 .cards {

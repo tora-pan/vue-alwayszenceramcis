@@ -15,13 +15,11 @@
         <router-link to="/contact">Contact</router-link>
       </li>
       <li class="link-item">
-        <router-link to="/cart">
-          <div class="shopping-cart">
-            <CartDropdown />
-            <fa icon="shopping-cart"></fa>
-            <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
-          </div>
-        </router-link>
+        <div @click="getTotals" class="shopping-cart">
+          <CartDropdown />
+          <fa icon="shopping-cart"></fa>
+          <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
+        </div>
       </li>
     </ul>
     <router-link v-if="username === null" class="login-link" to="/login"
@@ -89,8 +87,12 @@ export default {
 }
 
 .header {
-  height: 50px;
-  margin: 10px;
+  position: relative;
+  height: 80px;
+  width: 100vw;
+  max-width: 100%;
+  padding-left: 10px;
+  padding-right: 40px;
   background: rgb(246, 243, 243);
   display: flex;
   justify-content: center;
@@ -112,7 +114,6 @@ export default {
   align-items: center;
   gap: 50px;
   padding: 0 50px;
-  margin: auto 0;
   width: 100%;
   list-style: none;
 }
@@ -164,7 +165,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  /* margin: 20px; */
   margin-left: 50px;
   text-decoration: none;
   color: rgb(204, 134, 146);

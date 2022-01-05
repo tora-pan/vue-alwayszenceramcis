@@ -63,17 +63,31 @@ export default {
   position: absolute;
   display: flex;
   justify-content: flex-start;
-  background-color: rgb(180, 11, 11);
+  background: rgb(255, 234, 207);
+  background: radial-gradient(
+    circle,
+    rgba(255, 234, 207, 1) 0%,
+    rgba(237, 216, 182, 1) 100%
+  );
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   border-radius: 5px;
   width: 300px;
   height: 500px;
-  top: -20px;
+  top: 40px;
   left: -150px;
 }
 .header {
   width: 100%;
   height: 50px;
-  background-color: red;
+  color: black;
+
+  background: rgb(255, 234, 207);
+  background: radial-gradient(
+    circle,
+    rgba(255, 234, 207, 1) 0%,
+    rgba(237, 216, 182, 1) 100%
+  );
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
@@ -86,13 +100,17 @@ export default {
 .item-list {
   margin-top: 20px;
   padding-top: 20px;
+  width: 90%;
 }
 .item-list li {
   display: flex;
   flex-direction: row;
   padding: 10px;
   margin-bottom: 18px;
-  background-color: white;
+  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  /* background-color: white; */
 }
 
 .item-list .title-and-price {
@@ -101,10 +119,7 @@ export default {
   justify-content: flex-start;
 }
 .item-image {
-  /* float: left; */
-  margin-left: -50px;
   margin-right: 20px;
-  /* padding-right: 5px; */
 }
 .item-name {
   padding-top: 10px;
@@ -116,7 +131,12 @@ export default {
   bottom: 0px;
   height: 50px;
   width: 100%;
-  background-color: red;
+  background: rgb(255, 234, 207);
+  background: radial-gradient(
+    circle,
+    rgba(255, 234, 207, 1) 0%,
+    rgba(237, 216, 182, 1) 100%
+  );
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
