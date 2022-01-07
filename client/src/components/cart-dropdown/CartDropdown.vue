@@ -16,13 +16,13 @@
                 >${{ item.productPrice }} x {{ item.productQuantity }}</span
               >
             </div>
-            <button @click="removeItem">X</button>
+            <button @click="removeItem(item)">X</button>
           </li>
         </ul>
       </div>
       <div class="footer">
-        <button>Keep Shopping</button>
-        <button>Keep Checkout</button>
+        <button @click="continueShopping">Keep Shopping</button>
+        <button>Checkout</button>
       </div>
     </div>
   </div>
@@ -36,9 +36,13 @@ export default {
     return {};
   },
   methods: {
-    continueShopping() {},
+    continueShopping() {
+      this.$store.dispatch("toggleDropdownVisible");
+    },
     goToCart() {},
-    removeItem() {},
+    removeItem(item) {
+      this.$store.dispatch("removeItem", item);
+    },
   },
 
   computed: {

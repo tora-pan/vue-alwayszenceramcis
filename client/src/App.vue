@@ -17,6 +17,9 @@ export default {
       unsubscribeFromAuth: null,
     };
   },
+  beforeCreate() {
+    this.$store.commit("INITIALIZE_STORE");
+  },
   created() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {

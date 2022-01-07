@@ -15,7 +15,7 @@
         <router-link to="/contact">Contact</router-link>
       </li>
       <li class="link-item">
-        <div @click="getTotals" class="shopping-cart">
+        <div @click.self="getTotals" class="shopping-cart">
           <CartDropdown />
           <fa icon="shopping-cart"></fa>
           <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
@@ -127,6 +127,7 @@ export default {
 
 .shopping-cart {
   position: relative;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -6,6 +6,13 @@ const state = {
 
 // MUTATIONS
 const mutations = {
+  INITIALIZE_STORE(state) {
+    const localState = JSON.parse(localStorage.getItem("cartData"));
+    if (localState !== null) {
+      state.cartItems = localState;
+    }
+  },
+
   ADD_TO_CART(state, payload) {
     let productInCart = state.cartItems.find((cartItem) => {
       return cartItem.productId === payload.productId;
@@ -15,17 +22,19 @@ const mutations = {
     } else {
       state.cartItems.push(payload);
     }
+    localStorage.setItem("cartData", JSON.stringify(state.cartItems));
   },
-  REMOVE_FROM_CART(item) {
+  REMOVE_FROM_CART(state, payload) {
     let productInCart = state.cartItems.find((cartItem) => {
-      return cartItem.productId === item.productId;
+      return cartItem.productId === payload.productId;
     });
-    if (productInCart.productQuantity > 0) {
+    if (productInCart.productQuantity > 1) {
       productInCart.productQuantity -= 1;
     } else {
-      let index = state.cartItems.indexOf(item.productId);
+      let index = state.cartItems.indexOf(payload.productId);
       state.cartItems.splice(index, 1);
     }
+    localStorage.setItem("cartData", JSON.stringify(state.cartItems));
   },
   TOGGLE_DROPDOWN_VISIBLE() {
     this.state.isDropdownVisible = !this.state.isDropdownVisible;
@@ -34,12 +43,13 @@ const mutations = {
 // ACTIONS (asynchronous) ({commit})
 const actions = {
   addItem({ commit }, item) {
-    console.log(item);
     commit("ADD_TO_CART", item);
   },
   toggleDropdownVisible({ commit }) {
-    console.log("toggle called");
     commit("TOGGLE_DROPDOWN_VISIBLE");
+  },
+  removeItem({ commit }, item) {
+    commit("REMOVE_FROM_CART", item);
   },
 };
 // GETTERS
@@ -56,7 +66,7 @@ const getters = {
   getCartTotalPrice: (state) => {
     let totalPrice = 0;
     state.cartItems.map((item) => {
-      totalPrice += (item.productQuantity * item.productPrice);
+      totalPrice += item.productQuantity * item.productPrice;
     });
     return totalPrice;
   },

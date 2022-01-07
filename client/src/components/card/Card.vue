@@ -62,7 +62,6 @@ export default {
       this.isToggled = !this.isToggled;
     },
     addItemToCart() {
-      console.log("addItemToCart");
       this.$store.dispatch("addItem", {
         productId: this.id,
         productURL: this.imageURL,
