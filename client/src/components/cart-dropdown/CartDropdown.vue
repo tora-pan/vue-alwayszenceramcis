@@ -1,17 +1,25 @@
 <template>
-  <div v-show="isVisible" class="cart-dropdown">
-    <div class="container">
-      <div class="header">Your Current Total: ${{ cartTotalPrice }}</div>
-      <div class="item-list">
-        <ul>
-          <li v-for="item in cartItems" :key="item.id">
+  <div v-show="isVisible" class="relative z-50">
+    <div
+      class="absolute flex flex-col justify-start bg-red-200 rounded-b-md w-72 h-auto top-10 -left-36 pb-12"
+    >
+      <div class="h-12 w-full bg-red-100 flex justify-center items-center">
+        Your Current Total: ${{ cartTotalPrice }}
+      </div>
+      <div class="mt-1 pt-2 w-full bg-red-100">
+        <ul class="list-none">
+          <li
+            class="flex flex-row p-2 mb-4 w-full shadow-md"
+            v-for="item in cartItems"
+            :key="item.id"
+          >
             <img
-              class="item-image"
+              class="mx-2"
               :src="item.productURL"
               :alt="item.productDescription"
             />
-            <div class="title-and-price">
-              <span class="item-name">{{ item.productName }}</span>
+            <div class="flex flex-col justify-start">
+              <span class="pt-2 text-xl">{{ item.productName }}</span>
               <span class="item-price"
                 >${{ item.productPrice }} x {{ item.productQuantity }}</span
               >
@@ -20,9 +28,9 @@
           </li>
         </ul>
       </div>
-      <div class="footer">
-        <button @click="continueShopping">Keep Shopping</button>
-        <button>Checkout</button>
+      <div class="absolute bottom-0 h-12 w-full gap-2 bg-red-100 rounded-b-md flex felx-row justify-around px-2">
+        <button class="bg-red-400 my-1 rounded-md" @click="continueShopping">Keep Shopping</button>
+        <button class="bg-green-300 my-1 rounded-md">Checkout</button>
       </div>
     </div>
   </div>
@@ -58,94 +66,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.cart-dropdown {
-  position: relative;
-  z-index: 99999;
-}
-.container {
-  position: absolute;
-  display: flex;
-  justify-content: flex-start;
-  background: rgb(255, 234, 207);
-  background: radial-gradient(
-    circle,
-    rgba(255, 234, 207, 1) 0%,
-    rgba(237, 216, 182, 1) 100%
-  );
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  border-radius: 5px;
-  width: 300px;
-  height: 500px;
-  top: 40px;
-  left: -150px;
-}
-.header {
-  width: 100%;
-  height: 50px;
-  color: black;
-
-  background: rgb(255, 234, 207);
-  background: radial-gradient(
-    circle,
-    rgba(255, 234, 207, 1) 0%,
-    rgba(237, 216, 182, 1) 100%
-  );
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.item-list ul {
-  list-style: none;
-}
-.item-list {
-  margin-top: 20px;
-  padding-top: 20px;
-  width: 90%;
-}
-.item-list li {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  margin-bottom: 18px;
-  width: 100%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  /* background-color: white; */
-}
-
-.item-list .title-and-price {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.item-image {
-  margin-right: 20px;
-}
-.item-name {
-  padding-top: 10px;
-  font-size: 16px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0px;
-  height: 50px;
-  width: 100%;
-  background: rgb(255, 234, 207);
-  background: radial-gradient(
-    circle,
-    rgba(255, 234, 207, 1) 0%,
-    rgba(237, 216, 182, 1) 100%
-  );
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 5px 0px;
-}
-</style>
+<style scoped></style>

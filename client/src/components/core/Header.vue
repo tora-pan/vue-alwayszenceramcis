@@ -1,37 +1,64 @@
 <template>
-  <nav class="header">
-    <h1 class="brand">Always Zen Ceramics</h1>
-    <ul class="link-list">
-      <li class="link-item">
+  <nav
+    class="relative flex justify-center items-center w-screen max-w-full py-10 h-16 pl-3 pr-10 bg-white"
+  >
+    <h1 class="flex justify-start items-center pl-24 w-3/4">
+      Always Zen Ceramics
+    </h1>
+    <ul
+      class="hidden lg:flex flex-row justify-end items-center gap-14 py-0 px-12 w-full list-none"
+    >
+      <li class="hover:text-gray-300">
         <router-link to="/">Home</router-link>
       </li>
-      <li class="link-item">
+      <li class="hover:text-gray-300">
         <router-link to="/about">About</router-link>
       </li>
-      <li class="link-item">
+      <li class="hover:text-gray-300link-item">
         <router-link to="/shop">Shop</router-link>
       </li>
-      <li class="link-item">
+      <li class="hover:text-gray-300">
         <router-link to="/contact">Contact</router-link>
       </li>
-      <li class="link-item">
-        <div @click.self="getTotals" class="shopping-cart">
+      <li class="hover:text-gray-300link-item">
+        <div
+          @click.self="getTotals"
+          class="relative cursor-pointer flex justify-center items-center w-12 h-12 rounded-full border-solid border border-gray-600 bg-gray-100"
+        >
           <CartDropdown />
           <fa icon="shopping-cart"></fa>
-          <span v-if="cartTotal > 0" class="cart-badge">{{ cartTotal }}</span>
+          <span
+            v-if="cartTotal > 0"
+            class="absolute flex justify-center items-center -top-3 -right-3 bg-red-500 w-8 h-8 rounded-full"
+            >{{ cartTotal }}</span
+          >
         </div>
       </li>
     </ul>
-    <router-link v-if="username === null" class="login-link" to="/login"
+    <router-link
+      v-if="username === null"
+      class="hidden lg:flex justify-center items-center mx-5 font-bold text-red-300 hover:text-black"
+      to="/login"
       >Login</router-link
     >
-    <div class="username-text" v-else>
-      <img :src="photoUrl" class="profile-pic" alt="profile picture" />
-      <p>{{ username }}</p>
-      <button class="login-link" @click="logoutUser">Logout</button>
+    <div
+      class="hidden lg:flexflex flex-row justify-center items-center gap-2 ml-10 -mr-2"
+      v-else
+    >
+      <img
+        :src="photoUrl"
+        class="w-14 h-14 rounded-full"
+        alt="profile picture"
+      />
+      <p class="text-sm font-medium">{{ username }}</p>
+      <button
+        class="hidden lg:flex justify-center items-center mx-5 font-bold text-red-300"
+        @click="logoutUser"
+      >
+        Logout
+      </button>
     </div>
-    <button v-if="!isLoggedIn" class="button-24">Signup</button>
-    <button @click="getTotals">TEST</button>
+    <button v-if="!isLoggedIn" class="button-24 hidden lg:flex">Signup</button>
   </nav>
 </template>
 
@@ -69,114 +96,6 @@ export default {
 </script>
 
 <style scoped>
-.username-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 100px;
-  width: 200px;
-}
-.username-text p {
-  font-size: 0.8rem;
-}
-.profile-pic {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 5px;
-}
-
-.header {
-  position: relative;
-  height: 80px;
-  width: 100vw;
-  max-width: 100%;
-  padding-left: 10px;
-  padding-right: 40px;
-  background: rgb(246, 243, 243);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.brand {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 100px;
-  width: 70%;
-}
-
-.link-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 50px;
-  padding: 0 50px;
-  width: 100%;
-  list-style: none;
-}
-.link-item a {
-  text-decoration: none;
-  color: black;
-}
-.link-item a:hover {
-  color: rgb(158, 137, 137);
-}
-
-.shopping-cart {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid black;
-  color: rgb(175, 175, 175);
-  background: rgb(255, 255, 255);
-}
-.shopping-cart span {
-  color: white;
-}
-
-.cart-badge {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: -10px;
-  right: -10px;
-  background-color: #ff4742;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.signup-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 50px;
-  height: 20px;
-}
-.login-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin: 20px; */
-  margin-left: 50px;
-  text-decoration: none;
-  color: rgb(204, 134, 146);
-  font-weight: bold;
-}
-.login-link:hover {
-  color: black;
-}
-
-/* CSS */
 .button-24 {
   background: #ff4742;
   border: 1px solid #ff4742;
@@ -185,7 +104,7 @@ export default {
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
-  display: inline-block;
+  /* display: inline-block; */
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
   font-size: 16px;
   font-weight: 800;
@@ -194,12 +113,6 @@ export default {
   outline: 0;
   padding: 12px 14px;
   text-align: center;
-  text-rendering: geometricprecision;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
   margin-right: 50px;
 }
 

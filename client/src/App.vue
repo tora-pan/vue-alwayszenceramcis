@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-gray-300 ">
     <Header />
     <router-view></router-view>
   </div>
@@ -46,38 +46,13 @@ export default {
   margin: 0;
 }
 
-html,
+/* html,
 body {
   width: 100%;
-  /* height: 100%; */
   max-width: 100%;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  /* text-align: center; */
-  color: #2c3e50;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(255, 234, 207, 1) 0%,
-    rgba(218, 190, 142, 1) 100%
-  );
-}
+} */
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 50px; */
 }
 </style>
