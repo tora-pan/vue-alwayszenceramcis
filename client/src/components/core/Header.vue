@@ -42,7 +42,7 @@
       >Login</router-link
     >
     <div
-      class="hidden lg:flexflex flex-row justify-center items-center gap-2 ml-10 -mr-2"
+      class="hidden lg:flex flex-row justify-center items-center gap-2 ml-10 -mr-2"
       v-else
     >
       <img
