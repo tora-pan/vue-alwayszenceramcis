@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply  rounded-md font-medium px-2 py-1  border ;
+  }
+
+  .button--primary{
+    @apply bg-primary text-white hover:text-primary hover:bg-white hover:border-primary;
+  }
+  .button--secondary{
+    @apply bg-secondary text-white hover:text-secondary hover:bg-white hover:border-secondary;
+  }
+}

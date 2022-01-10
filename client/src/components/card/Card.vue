@@ -1,22 +1,17 @@
 <template>
-  <div class="card">
-    <div class="images">
+  <div class="relative m-auto overflow-hidden w-520 bg-light rounded-lg shadow-lg">
+    <div class="p-2">
       <img
         src="http://mistillas.cl/wp-content/uploads/2018/04/Nike-Epic-React-Flyknit-%E2%80%9CPearl-Pink%E2%80%9D-01.jpg"
       />
     </div>
-    <div class="slideshow-buttons">
-      <div class="one"></div>
-      <div class="two"></div>
-      <div class="three"></div>
-      <div class="four"></div>
-    </div>
-    <p class="pick">choose color</p>
-    <div class="sizes">
+
+    <p class="mt-1 ml-3">choose color</p>
+    <div class="grid grid-cols-4 gap-4 w-2/3 ml-5 mt-2 mb-4 bg-light text-dark">
       <div
         v-for="color in availableColors"
         :key="color"
-        class="size"
+        class="p-2 border border-white text-dark cursor-pointer transition"
         :class="activeColor === color ? 'focus' : ''"
         @click="toggle(color)"
       >
@@ -97,16 +92,7 @@ body {
   font-family: "Lato", sans-serif, sans-serif;
   text-transform: uppercase;
 }
-.card {
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  width: 520px;
-  height: 350px;
-  background: #f5f5f5;
-  box-shadow: 5px 5px 15px rgba(186, 126, 126, 0.5);
-  border-radius: 10px;
-}
+
 
 p {
   font-size: 0.6em;
@@ -131,37 +117,6 @@ img {
   margin-top: 47px;
 }
 
-.slideshow-buttons {
-  top: 70%;
-  /* display: none; */
-}
-
-.one,
-.two,
-.three,
-.four {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #beb2b2;
-}
-
-.one {
-  left: 22%;
-}
-
-.two {
-  left: 27%;
-}
-
-.three {
-  left: 32%;
-}
-
-.four {
-  left: 37%;
-}
 
 .product {
   position: absolute;
@@ -211,31 +166,6 @@ button:hover {
   width: 22%;
 }
 
-.sizes {
-  display: grid;
-  color: #d9aab7;
-  grid-template-columns: repeat(auto-fill, 50px);
-  width: 60%;
-  grid-gap: 4px;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-.sizes:hover {
-  cursor: pointer;
-}
-
-.pick {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-left: 20px;
-}
-
-.size {
-  padding: 9px;
-  border: 1px solid #e0c9cb;
-  font-size: 0.7em;
-  text-align: center;
-}
 .size:hover {
   background: #ba7e7e;
   color: #f5f5f5;
