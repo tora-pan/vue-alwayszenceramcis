@@ -21,18 +21,18 @@
         <router-link to="/contact">Contact</router-link>
       </li>
       <li class="hover:text-black">
-        <div
-          @click.self="getTotals"
-          class="relative cursor-pointer flex justify-center items-center w-12 h-12 rounded-full border-solid border border-gray-600 bg-gray-100 text-white"
-        >
-          <CartDropdown />
-          <fa icon="shopping-cart" class="text-dark"></fa>
-          <span
-            v-if="cartTotal > 0"
-            class="absolute flex justify-center items-center -top-3 -right-3 bg-primary w-8 h-8 rounded-full"
-            >{{ cartTotal }}</span
-          >
-        </div>
+        <HeaderDropdownIcon
+          :test="getLiked"
+          :badgeTotal="allLikedItems"
+          dropdownIcon="heart"
+        />
+      </li>
+      <li class="hover:text-black">
+        <HeaderDropdownIcon
+          :badgeTotal="cartTotal"
+          dropdownIcon="shopping-cart"
+          @getTotals="getTotals"
+        />
       </li>
     </ul>
     <router-link
@@ -66,7 +66,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import CartDropdown from "../cart-dropdown/CartDropdown.vue";
+import HeaderDropdownIcon from "../header-dropdown-icons/HeaderDropdownIcon.vue";
 export default {
   name: "Header",
   data() {
@@ -75,7 +75,7 @@ export default {
     };
   },
   components: {
-    CartDropdown,
+    HeaderDropdownIcon,
   },
   methods: {
     logoutUser() {
@@ -84,6 +84,7 @@ export default {
     getTotals() {
       this.$store.dispatch("toggleDropdownVisible");
     },
+
   },
   computed: {
     ...mapGetters({
@@ -92,7 +93,12 @@ export default {
       photoUrl: "getPhotoUrl",
       cartTotal: "getAllItems",
       allCartItems: "getCartItems",
+      allLikedItems: "getAllLikedItems",
+      isLikedVisible: "getLikedIsVisible",
     }),
+    getLiked() {
+      return this.$store.state.isLikedDropdownvisible;
+    },
   },
 };
 </script>

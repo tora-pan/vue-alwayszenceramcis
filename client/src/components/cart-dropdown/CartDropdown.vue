@@ -1,9 +1,11 @@
 <template>
-  <div v-show="isVisible" class="relative z-50">
+  <div v-if="isVisible" class="relative z-50">
     <div
       class="absolute flex flex-col justify-start bg-light rounded-b-md w-96 h-auto top-10 -left-36 pb-12 border-dark border"
     >
-      <div class="h-12 w-full bg-light text-dark flex justify-center items-center">
+      <div
+        class="h-12 w-full bg-light text-dark flex justify-center items-center"
+      >
         Your Current Total: ${{ cartTotalPrice }}
       </div>
       <div class="mt-1 pt-2 w-full bg-light">
@@ -28,8 +30,12 @@
           </li>
         </ul>
       </div>
-      <div class="relative h-12 gap-1 bg-light rounded-b-md flex felx-row justify-around px-2">
-        <button class="button button--primary" @click="continueShopping">Keep Shopping</button>
+      <div
+        class="relative h-12 gap-1 bg-light rounded-b-md flex felx-row justify-around px-2"
+      >
+        <button class="button button--primary" @click="continueShopping">
+          Keep Shopping
+        </button>
         <button class="button button--secondary">Checkout</button>
       </div>
     </div>
@@ -42,6 +48,9 @@ export default {
   name: "CartDropdown",
   data() {
     return {};
+  },
+  props: {
+    test: Boolean,
   },
   methods: {
     continueShopping() {
@@ -67,4 +76,3 @@ export default {
 </script>
 
 <style scoped></style>
-

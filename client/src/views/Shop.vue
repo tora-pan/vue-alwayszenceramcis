@@ -1,8 +1,8 @@
 <template>
-  <div class="shop-page">
-    <h1>Shop Page</h1>
+  <div class="flex flex-col justify-center items-center mb-10">
+    <h1 class="text-4xl mb-10">Shop Page</h1>
     <!-- List of items -->
-    <div class="cards">
+    <div class="grid grid-cols-2 gap-6">
       <Card
         :id="0"
         imageURL="https://picsum.photos/49/49"
@@ -56,19 +56,7 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  /* padding-top: 20px;  */
-}
 
-.shop-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* height: 100%; */
-  /* margin-top: 20px;
-  margin-bottom: 20px; */
-}
 
 .cards {
   display: grid;

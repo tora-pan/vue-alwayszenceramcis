@@ -1,5 +1,7 @@
 <template>
-  <div class="relative m-auto overflow-hidden w-520 bg-light rounded-lg shadow-lg">
+  <div
+    class="relative m-auto overflow-hidden w-520 bg-light rounded-lg shadow-lg"
+  >
     <div class="p-2">
       <img
         src="http://mistillas.cl/wp-content/uploads/2018/04/Nike-Epic-React-Flyknit-%E2%80%9CPearl-Pink%E2%80%9D-01.jpg"
@@ -55,6 +57,15 @@ export default {
     },
     toggleFocus() {
       this.isToggled = !this.isToggled;
+      this.$store.dispatch("addLiked", {
+        productId: this.id,
+        productURL: this.imageURL,
+        productLiked: this.isToggled,
+        productName: this.title,
+        productDescription: this.description,
+        productPrice: this.price,
+        productQuantity: 1,
+      });
     },
     addItemToCart() {
       this.$store.dispatch("addItem", {
@@ -93,7 +104,6 @@ body {
   text-transform: uppercase;
 }
 
-
 p {
   font-size: 0.6em;
   color: #ba7e7e;
@@ -116,7 +126,6 @@ img {
   width: 290px;
   margin-top: 47px;
 }
-
 
 .product {
   position: absolute;

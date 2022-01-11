@@ -1,9 +1,9 @@
 <template>
-  <div class="login-signup">
-    <h2>Login with Google</h2>
-    <button @click="googleSignin">Click Here</button>
-    <button @click="logInfo">LogInfo</button>
-    <button @click="logout">Logout</button>
+  <div class="flex flex-col justify-center items-center mt-20">
+    <h2 class="text-3xl mb-4">Login with Google</h2>
+    <button @click="googleSignin" class="button button--primary">Click Here</button>
+    <!-- <button @click="logInfo">LogInfo</button>
+    <button @click="logout">Logout</button> -->
   </div>
 </template>
 
