@@ -67,6 +67,7 @@ const actions = {
     commit("ADD_TO_CART", item);
   },
   addLiked({ commit }, item) {
+    console.log(item);
     commit("ADD_TO_FAVORITES", item);
   },
   toggleDropdownVisible({ commit }) {

@@ -21,11 +21,12 @@
         <router-link to="/contact">Contact</router-link>
       </li>
       <li class="hover:text-black">
-        <HeaderDropdownIcon
-          :test="getLiked"
-          :badgeTotal="allLikedItems"
-          dropdownIcon="heart"
-        />
+        <router-link to="/favorites">
+          <HeaderDropdownIcon
+            :badgeTotal="allLikedItems"
+            dropdownIcon="heart"
+          />
+        </router-link>
       </li>
       <li class="hover:text-black">
         <HeaderDropdownIcon
@@ -84,7 +85,6 @@ export default {
     getTotals() {
       this.$store.dispatch("toggleDropdownVisible");
     },
-
   },
   computed: {
     ...mapGetters({
