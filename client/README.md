@@ -1,6 +1,6 @@
 # always-zen-ceramics
 
-![](https://github.com/tora-pan/vue-alwayszenceramics/client/zenCeramics.gif)
+![](https://github.com/tora-pan/vue-alwayszenceramics/blob/master/client/zenCeramics.gif)
 
 ## Project setup
 ```
