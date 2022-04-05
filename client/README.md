@@ -1,5 +1,7 @@
 # always-zen-ceramics
 
+![](https://github.com/tora-pan/vue-alwayszenceramics/client/zenCeramics.gif)
+
 ## Project setup
 ```
 npm install
